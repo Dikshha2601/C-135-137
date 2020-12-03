@@ -1,23 +1,18 @@
-video = null;
 status = null;
 
-function preload() {
-  video = createVideo("video.mp4");
-  video.hide();
-}
+function preload() {}
 
 function setup() {
   canvas = createCanvas(640, 420);
   canvas.center();
+  video = createCapture(VIDEO);
+  video.hide();
 }
 
 function start() {
   status = true;
   objectDetector = ml5.objectDetector("cocossd", function () {
     console.log("Model loaded");
-    video.loop();
-    video.speed(1);
-    video.volume(0);
   });
 }
 
