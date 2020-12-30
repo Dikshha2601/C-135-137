@@ -45,6 +45,7 @@ function draw() {
         speak_data = objectFind + " found!";
         utterThis = new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
+        image(video, 0, 0, 0, 0);
       }
 
       document.getElementById("no_of_objects").innerHTML = percent = floor(
