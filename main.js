@@ -45,7 +45,7 @@ function draw() {
         speak_data = objectFind + " found!";
         utterThis = new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
-        variable_name_holds_webcamLiveView.stop();
+        video.stop();
         object_Detector.detect(video, function () {});
       }
 
