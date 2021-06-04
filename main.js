@@ -26,14 +26,15 @@ function draw() {
   image(video, 0, 0, 640, 420);
   console.log(status);
   if (status != "") {
-    object_Detector.detect(video, function (error, results) {
+    object_Detector.detect(video, gotResult());
+    function gotResult(error, results) {
       if (error) {
         console.error(error);
       } else {
         console.log(results);
         objects = results;
       }
-    });
+    }
     document.getElementById("status").innerHTML = "Status: Objects detected";
     for (i = 0; i < objects.length; i++) {
       objectFind = document.getElementById("object").value;
@@ -46,7 +47,7 @@ function draw() {
         utterThis = new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
         video.stop();
-        object_Detector.detect(video, function () {});
+        object_Detector.detect(video, gotResult());
       }
 
       document.getElementById("no_of_objects").innerHTML = percent = floor(
